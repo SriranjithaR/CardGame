@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game</title>
+	<link type="text/css" rel="stylesheet" href="index.css">
+	<meta charset="UTF-8"> 
+</head>
+<body>
+	<script>
+		var x="null";
+		var y="null";
+		var count=0;
+		var s;
+	</script>
+	
+	<center>
+	<a href="#tab"><div id="topBar" onclick=topBarClick()>Start Game!</div></a>
+	<br><br>
+	<div id="timeBar"><p id="timeBarP"></p><hr><p style="font-size:20px">seconds</p></div>
+	
+	<table id="tab" cellpadding="2px">
+		<tr>‎
+			<td><div class="card"><img src="pic/card.jpg" id="kingSpades1" onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="kingHearts1"onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="queenClubs1"onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="kingClubs1"onclick=clickFn(id) ></div><td>
+		</tr>
+		<tr>
+			<td><div class="card"><img src="pic/card.jpg" id="queenClubs2" onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="kingClubs2" onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="kingDiamonds1" onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="queenHearts2" onclick=clickFn(id) ></div><td>
+		</tr>
+		<tr>
+			<td><div class="card"><img src="pic/card.jpg" id="queenDiamonds1" onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="queenSpades1" onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="queenHearts1"onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="kingDiamonds2"onclick=clickFn(id) ></div><td>
+		</tr>
+		<tr>
+			<td><div class="card"><img src="pic/card.jpg" id="kingSpades2" onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="queenSpades2" onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="kingHearts2" onclick=clickFn(id) ></div><td>
+			<td><div class="card"><img src="pic/card.jpg" id="queenDiamonds2"onclick=clickFn(id) ></div><td>
+		</tr>
+	</table></center>
+	<script>
+		function topBarClick()
+		{
+			document.getElementById("topBar").style.visibility="hidden";	
+			document.getElementById("timeBar").style.visibility="visible";			
+			document.getElementById("topBar").style.height="10px";			
+			document.getElementById("tab").style.opacity="1.0";
+			document.getElementById("tab").style.top="100";
+			s=new Date();
+		} 
+		var myVar=setInterval(function(){myTimer()},1000);
+
+        	
+		function myTimer() {
+			var d = new Date();
+   			document.getElementById("timeBarP").innerHTML= (d.getMinutes()*60+d.getSeconds())-(s.getMinutes()*60+s.getSeconds());
+		}
+
+		function sleep(milliseconds) {
+ 			var start = new Date().getTime();
+  			for (var i = 0; i < 1e7; i++) {
+   				if ((new Date().getTime() - start) > milliseconds){
+     					break;
+    				}
+  			}	
+		}
+	
+		function clickFn(id)
+		{
+			var pic;
+
+			if(id=="kingSpades1" || id=="kingSpades2")
+				pic="pic/king-spades.png";
+
+			else if(id=="kingHearts1" || id=="kingHearts2")
+				pic ="pic/king-hearts.png";
+
+			else if(id=="kingClubs1" || id=="kingClubs2")
+				pic ="pic/king-clubs.png";
+
+			else if(id=="kingDiamonds1" || id=="kingDiamonds2")
+				pic ="pic/king-diamonds.png";
+
+			else if(id=="queenSpades1" || id=="queenSpades2")
+				pic="pic/queen-spades.png";
+
+			else if(id=="queenHearts1" || id=="queenHearts2")
+				pic ="pic/queen-hearts.png";
+
+			else if(id=="queenClubs1" || id=="queenClubs2")
+				pic ="pic/queen-clubs.png";
+
+			else if(id=="queenDiamonds1" || id=="queenDiamonds2")
+				pic ="pic/queen-diamonds.png";
+
+			if(x=="null")
+			{	x=id;
+				document.getElementById(x).src=pic;
+
+			}
+			else
+			{
+				if(id==x)
+					return;
+				y=id;
+				document.getElementById(y).src=pic;
+				
+				if(document.getElementById(x).src==document.getElementById(y).src)
+				{
+					document.getElementById(x).src="pic/cards4.jpg" ;
+					document.getElementById(y).src="pic/cards4.jpg" ;
+					count ++;
+					if(count==8)
+						gameOver();
+					
+				}
+				else
+				{
+					alert("mismatch");
+					document.getElementById(x).src=document.getElementById(y).src="pic/card.jpg"  ;
+					
+					//sleep(1000);
+				}
+				x="null";
+				y="null";
+			}
+			
+		}
+		function computeTime()
+		{
+				var d=new Date();
+				return (d.getMinutes()*60+d.getSeconds())-(s.getMinutes()*60+s.getSeconds());
+		}
+		function gameOver()
+		{
+			alert("Game over, "+processUser()+". You finished in "+computeTime()+" seconds");
+			document.getElementById("tab").style.opacity="0.5";
+			document.getElementById("topBar").style.visibility="visible";			
+			document.getElementById("topBar").style.height="500px";
+			document.getElementById("timeBar").style.visibility="hidden";	
+		}
+
+		function processUser()
+		{
+			var parameters = location.search.substring(1).split("&");
+
+			var temp = parameters[0].split("=");
+			return unescape(temp[1]);
+		}
+	</script>
+</body>
+</html>

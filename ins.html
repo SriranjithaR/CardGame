@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Instructions</title>
+	<meta charset="UTF-8">
+	<style>
+		#gotIt{
+			background-color:#52542b;
+			height:100px;
+			font-family:Verdana;
+			font-size:2em;
+			color:white;
+			font-weight:bold;
+			text-align:center;
+			padding-top:30px;
+			transition-property:background-color,color;
+			transition-duration:1s;
+		}
+		#gotIt:hover{
+			
+			color:black;
+		}
+	</style>
+</head>
+<body style="background-image:url('pic/cards4.jpg');">
+<script>
+	var x=1;
+</script>
+<br><br>
+<center>
+<div style="left: 800;">
+<div style="position: relative; left: 800; top: 0;background-color:white">
+  <img id="ins" src="pic/ins1.png" style="position: relative; top: 0; left: 800;"/>
+  <img id="arrow" src="pic/rA10.png" style="position: relative; top: -100px; left: 30px;" height="70" width="70"/ onclick="nextPic()" 
+  onmouseover=document.getElementById("arrow").src="pic/rA11.jpg",document.getElementById("ins").style.opacity="0.8" 
+  onmouseout=document.getElementById("arrow").src="pic/rA10.png",document.getElementById("ins").style.opacity="1">
+  <p id="insP" style="font-family:Candara;font-size:1.5em">Click on a card to flip it</p>
+  <br>
+</div>
+</div>
+<center>
+<a href="index.html" style="text-decoration:none">
+<div id="gotIt">GOT IT!</div></a>
+<script>
+function nextPic()
+{
+	var pic=document.getElementById("ins").src;
+	var stmt=document.getElementById("insP").innerHTML;
+	switch(x)
+	{
+		case 1:
+			pic="pic/ins2.png";
+			stmt="See the first card";
+			x++;
+			break;
+		case 2:
+			pic="pic/ins3.jpg";
+			x++;
+			stmt="Click on a second card. If the cards aren't same, it's a mismatch";
+			break;
+		case 3:
+			pic="pic/ins4.png";
+			x++;
+			stmt="If the cards are the same, you have got one pair right, indicated by the change in card cover"
+			break;
+		case 4:
+			pic="pic/ins5.jpg";
+			stmt="Regularly check the time bar throughout the game!";
+			x++;
+			break;
+		default:
+			break;
+	}
+	document.getElementById("ins").src=pic;
+	document.getElementById("insP").innerHTML=stmt;
+	
+}
+
+</script>
+</body>
+</html>

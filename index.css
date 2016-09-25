@@ -1,0 +1,72 @@
+body{
+	background-image:url("pic/solidred.jpg");
+}
+a{
+	text-decoration:none;
+}
+.card:hover{
+	position:relative;
+	top:5px;
+	cursor:grab;
+}
+
+.card img{
+	height:180px;
+	width:140px;
+	border-radius : 10px;
+}
+
+.card{
+	box-shadow: 10px 8px 5px #888888;
+	border : 1px solid grey;
+	border-radius : 10px;
+	height:180px;
+	width:140px;
+}
+
+#tab{
+	background-color:white;
+	opacity:0.5;
+	border-radius:10px;
+}
+
+#topBar{
+	font-family:Palatino Linotype,Yu Gothic,Calibri,Gabriola;
+	top:200px;
+	color:white;
+	font-size : 5em;
+	padding : 10px;
+	height:500px;
+	background-color::#a5ebeb;
+	width:100%;
+	text-align:center;
+	-moz-animation : topBarAn 6s; 
+	-moz-animation-iteration-count: infinite;
+    -moz-animation-direction: alternate;
+}
+
+@-moz-keyframes topBarAn{
+
+	from { background-color:#7c6e6e; } 
+	to { background-color:#FAE157 }
+}
+
+#topBar:hover{
+	height:100px;
+	-moz-transition-property: height;
+ 	-moz-transition-duration: 4s;
+ 	-moz-transition-timing-function: linear;
+}
+#timeBar{
+	float:right;
+	width :200px;
+	height :200px;
+	background-image:url("pic/green.jpg");
+	visibility:hidden;
+	color:white; 
+	padding-top:75px;
+	text-align:center;
+	font-size:40px;
+	border-style:groove;
+	border-width:8px;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form</title>
+	<link type="text/css" rel="stylesheet" href="front.css">
+	<meta charset="UTF-8">
+</head>
+<body>
+		<br>
+		<br>
+
+<div id="cf" style="float:left">
+  <img class="bottom" src="pic/ace1.png">
+  <img class="top7" src="pic/card.jpg" >
+</div>
+<div id="cf1" class="cards" style="float:left">
+	<img class="bottom" src="pic/cards5.jpg">
+  <img class="top5" src="pic/cards7.jpg" >
+</div>
+<div id="cf2" class="cards" style="float:left">
+  <img class="bottom" src="pic/cards6.jpg">
+  <img class="top6" src="pic/cards3.jpg" >
+</div>
+<div id="cf3" class="cards"  style="float:left">
+  <img class="bottom" src="pic/ace2.jpg">
+  <img class="top4" src="pic/queen-spades.png" >
+</div>
+<div id="cf4" class="cards"  style="float:left">
+  <img class="bottom" src="pic/king1.jpeg">
+  <img class="top5" src="pic/cards4.jpg" >
+</div>
+<div id="cf5" class="cards"  style="float:left">
+  <img class="bottom" src="pic/ace3.jpg">
+  <img class="top9" src="pic/cards8.jpg" >
+</div>
+
+<div id="for">
+<form action="ins.html" ><center><b>
+<br>
+Enter Player name:</b>
+<input type="text" name="name">
+<br><br>
+<a href="ins.html" style="text-decoration:none"><div id="rules">CHECK RULES</div></a>
+</center>
+<br><br>
+</form>
+</div>
+<script>
+	console.log(document.getElementById("cf1").offsetLeft);
+	console.log(document.getElementById("cf2").offsetLeft);
+	if(document.getElementById("cf2").offsetLeft-document.getElementById("cf1").offsetLeft==250)
+		document.getElementById("cf2").style.opacity="0";
+	
+</script>
+</body>
+</html>
